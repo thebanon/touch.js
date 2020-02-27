@@ -9,11 +9,13 @@ window.touch = {
         else if (type === "touchcancel") { }
         else if (type === "touchend") { clearTimeout(touch.local.press); touch.local.press = null; touch.local.type = null; }
     },
-    events: (target,t,type=t?t:'tap') => {
-        console.log({target,type});
+    events: (target,t,touch=t?t:'tap') => { 
+      document.body.dataset.touch = touch;
+      console.log({target,touch});
     }
 }
 function init() {
+  TouchEmulator();
   document.body.addEventListener("touchstart",touch.handler,{passive:true});
   document.body.addEventListener("touchmove",touch.handler,{passive:true});
   document.body.addEventListener("touchcancel",touch.handler,false);
