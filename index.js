@@ -1,3 +1,9 @@
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) { registration.unregister(); }
+    navigator.serviceWorker.register('sw.js');
+  });
+}
 window.touch = {
     local: {dbl: null, press: null, type: null},
     handler: (event,type=event.type) => {
