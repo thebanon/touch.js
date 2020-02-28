@@ -13,7 +13,7 @@ window.touch = {
       },
       press: null, 
       threshold: {
-        drag: 50
+        drag: 25
       },
       type: null
     },
