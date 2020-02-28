@@ -20,7 +20,7 @@ window.touch = {
       console.log({target,touch});
     }
 }
-function init() {
+function init() { alert(document.head.querySelector('meta[name="viewport"]').content);
   TouchEmulator();
   document.body.addEventListener("touchstart",touch.handler,{passive:true});
   document.body.addEventListener("touchmove",touch.handler,{passive:true});
