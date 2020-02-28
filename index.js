@@ -12,16 +12,11 @@ window.touch = {
             else { touch.local.type = 'press'; touch.local.dbl = setTimeout(() => { touch.local.dbl = null;  touch.events(event.target,touch.local.type); },300); }
         }
         else if (type === "touchmove") { clearTimeout(touch.local.dbl); touch.local.dbl = null; touch.local.type = 'drag'; touch.events(event.target,'drag'); }
-        else if (type === "touchcancel") { }
         else if (type === "touchend") { clearTimeout(touch.local.press); touch.local.press = null; touch.local.type = null; }
     },
-    events: (target,t,touch=t?t:'tap') => { 
-      document.body.dataset.touch = touch;
-      console.log({target,touch});
-    }
+    events: (target,t,touch=t?t:'tap') => { document.body.dataset.touch = touch; console.log({target,touch}); }
 }
-function init() { alert(document.head.querySelector('meta[name="viewport"]').content);
-  TouchEmulator();
+function init(url) { TouchEmulator();
   document.body.addEventListener("touchstart",touch.handler,{passive:true});
   document.body.addEventListener("touchmove",touch.handler,{passive:true});
   document.body.addEventListener("touchcancel",touch.handler,false);
